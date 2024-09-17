@@ -18,7 +18,7 @@ services:
     container_name: jira_db
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: jHSDG782#@
+      POSTGRES_PASSWORD: jira
       POSTGRES_DB: jira
     volumes:
       - /opt/volumes/jira_db_data:/var/lib/postgresql/data
