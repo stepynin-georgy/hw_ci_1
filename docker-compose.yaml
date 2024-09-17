@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  jira_app:
+    image: wangzan18/jira
+    container_name: jira_app
+    depends_on:
+      - jira_db
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /opt/volumes/jira_data:/var/atlassian/jira:rw
+
+  jira_db:
+    image: mirror.gcr.io/library/postgres:14.3-alpine
+    restart: unless-stopped
+    container_name: jira_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jHSDG782#@
+      POSTGRES_DB: jira
+    volumes:
+      - /opt/volumes/jira_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  jira_data:
+  jira_db_data:
